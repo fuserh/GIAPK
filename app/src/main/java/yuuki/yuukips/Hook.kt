@@ -31,7 +31,8 @@ class Hook {
 
     // App
     private val package_apk = "com.mihoyo.kali"
-    private val injek_activity = "com.mihoyo.combosdk.ComboSDKActivity"
+    // private val injek_activity = "com.mihoyo.combosdk.ComboSDKActivity"
+    private val injek_activity = "com.miHoYo.GetMobileInfo.MainActivity"
     private val path = "/data/user/0/${package_apk}"
     private val file_json = "/data/user/0/${package_apk}/server.json"
 
