@@ -1,0 +1,75 @@
+# This is a basic workflow to help you get started with Actions
+
+name: 自动构建APK
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "3.3os-3.4os" ]
+  pull_request:
+    branches: [ "3.3os-3.4os" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      #- name: Run Install Java17
+        #run: sudo apt install openjdk-17-jdk npm openjdk-17-jre
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run Chmod all-run
+        run: sudo chmod 777 -R ./
+      - name: Run Make Release
+        run: ./gradlew assembleRelease
+      #- name: Run Remove Java17
+        #run: sudo apt remove openjdk-17-jdk
+      #- name: Run Apt Remove-nouseful
+        #run: sudo apt autoremove
+      #- name: Run Install Java21
+        #run: sudo apt install openjdk-21-jdk openjdk-21-jre
+      - name: Run MakeDir
+        run: mkdir apk
+      - name: Download APK
+        run: wget -i url.txt -O apktem.apk
+      - name: Run Chmod all-run
+        run: sudo chmod 777 -R ./
+      - name: Install apk-mitm
+        run: npm install -g apk-mitm
+      - name: Move apktool.jar
+        run: mv ./tool/apktool.jar ~
+      - name: Chmod apktool.jar
+        run: sudo chmod 777 ~/apktool.jar
+      - name: Run apk-mitm
+        run: sudo apk-mitm --apktool ~/apktool.jar apktem.apk
+      - name: Move APK
+        run: sudo mv apktem-patched.apk apk/cn4rel.apk
+      - name: Remove temapk
+        run: sudo rm apktem.apk
+      - name: Run Chmod all-run
+        run: sudo chmod 777 -R ./
+      - name: Fake Signed
+        run: java -jar tool/uber-apk-signer.jar -a app/build/outputs/apk/release/app-release-unsigned.apk
+      - name: Patch mod metadata to patch proxy
+        run: java -jar tool/lspatch.jar apk/cn4rel.apk -m app/build/outputs/apk/release/app-release-aligned-debugSigned.apk
+      - name: Remove temapk
+        run: sudo rm -rf apk app tool gradle
+      - name: 上传构建 # 上传构建产物，这里我们的源码目录是 src，而实际运行的代码是构建后的 bin 目录
+        uses: actions/upload-artifact@v4
+        with:
+          name: apkmake_output
+          path: .
