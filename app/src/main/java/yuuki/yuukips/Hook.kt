@@ -30,7 +30,7 @@ class Hook {
     private var server = "http://127.0.0.1:8080"
 
     // App
-    private val package_apk = "com.HoYoverse.hkrpgoversea"
+    private val package_apk = "com.mihoyo.kali"
     private val injek_activity = "com.mihoyo.combosdk.ComboSDKActivity"
     private val path = "/data/user/0/${package_apk}"
     private val file_json = "/data/user/0/${package_apk}/server.json"
@@ -49,6 +49,65 @@ class Hook {
                     "log-upload.mihoyo.com",
                     "globaldp-prod-os01.starrails.com",
                     "globaldp-prod-os02.starrails.com",
+                    // More Domain & log
+                    "overseauspider.yuanshen.com:8888",
+                    "api-os-takumi.mihoyo.com",
+                    "hk4e-api-os-static.mihoyo.com",
+                    "hk4e-sdk-os.mihoyo.com",
+                    "dispatchosglobal.yuanshen.com",
+                    "osusadispatch.yuanshen.com",
+                    "account.mihoyo.com",
+                    "log-upload-os.mihoyo.com",
+                    "dispatchcntest.yuanshen.com",
+                    "devlog-upload.mihoyo.com",
+                    "webstatic.mihoyo.com",
+                    "log-upload.mihoyo.com",
+                    "hk4e-sdk.mihoyo.com",
+                    "api-beta-sdk.mihoyo.com",
+                    "api-beta-sdk-os.mihoyo.com",
+                    "cnbeta01dispatch.yuanshen.com",
+                    "dispatchcnglobal.yuanshen.com",
+                    "cnbeta02dispatch.yuanshen.com",
+                    "sdk-os-static.mihoyo.com",
+                    "webstatic-sea.mihoyo.com",
+                    "webstatic-sea.hoyoverse.com",
+                    "hk4e-sdk-os-static.hoyoverse.com",
+                    "sdk-os-static.hoyoverse.com",
+                    "api-account-os.hoyoverse.com",
+                    "hk4e-sdk-os.hoyoverse.com",
+                    "overseauspider.yuanshen.com",
+                    "gameapi-account.mihoyo.com",
+                    "minor-api.mihoyo.com",
+                    "public-data-api.mihoyo.com",
+                    "uspider.yuanshen.com",
+                    "sdk-static.mihoyo.com",
+                    "abtest-api-data-sg.hoyoverse.com",
+                    "log-upload-os.hoyoverse.com",
+                    // CN
+                    "dispatchcnglobal.yuanshen.com",
+                    "gameapi-account.mihoyo.com",
+                    "hk4e-sdk-s.mihoyo.com",
+                    "log-upload.mihoyo.com",
+                    "minor-api.mihoyo.com",
+                    "public-data-api.mihoyo.com",
+                    "sdk-static.mihoyo.com",
+                    "webstatic.mihoyo.com",
+                    "user.mihoyo.com",
+                    // Global
+                    "dispatchosglobal.yuanshen.com",        
+                    "api-account-os.hoyoverse.com",
+                    "hk4e-sdk-os-s.hoyoverse.com",
+                    "hk4e-sdk-os-static.hoyoverse.com",
+                    "hk4e-sdk-os.hoyoverse.com",
+                    "log-upload-os.hoyoverse.com",
+                    "minor-api-os.hoyoverse.com",
+                    "sdk-os-static.hoyoverse.com",
+                    "sg-public-data-api.hoyoverse.com",
+                    "webstatic.hoyoverse.com",
+                    // List Server
+                    "osasiadispatch.yuanshen.com",
+                    "oseurodispatch.yuanshen.com",
+                    "osusadispatch.yuanshen.com"
             )
 
     // Activity
